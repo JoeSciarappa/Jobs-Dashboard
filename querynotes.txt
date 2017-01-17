@@ -1,0 +1,3 @@
+ select name, job, count(job) as occurances from watchdog_jobs group by name,job;
+
+select * from watchdog_jobs where date = '2017-01-12';

@@ -1,0 +1,629 @@
+{% extends "outline.html" %}
+
+{% block head %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+{% endblock %}
+
+{% block jscript %}
+
+
+
+$(function () {
+
+    Highcharts.getOptions().plotOptions.pie.colors = (function () {
+        var colors = [],
+            base = Highcharts.getOptions().colors[0],
+            i;
+
+        for (i = 0; i < 10; i += 1) {
+		colors.push(Highcharts.Color(base).brighten((i - 6.5) / 10).get());
+        }
+        return colors;
+    }());
+
+
+{% if PhonePie %}
+    Highcharts.chart('PhonePie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Phone Day Percentage by Racker'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ PhonePie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+{% if TicketPie %}
+    Highcharts.chart('TicketPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Ticket Day Percentage by Racker'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ TicketPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+{% if AlertPie %}
+    Highcharts.chart('AlertPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Alert Day Percentage by Racker'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ AlertPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+
+//### Color Swap
+    Highcharts.getOptions().plotOptions.pie.colors = (function () {
+        var colors = [],
+            base = Highcharts.getOptions().colors[0],
+            i;
+
+        for (i = 0; i < 10; i += 1) {
+                colors.push(Highcharts.Color(base).brighten((i - 3) / 4).get());
+        }
+        return colors;
+    }());
+//#### Color Swap
+
+{% if ChatPie %}
+    Highcharts.chart('ChatPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chat Day Percentage by Racker'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ ChatPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+
+
+{% if CarlosSPie %}
+    Highcharts.chart('CarlosSPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Carlos S Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ CarlosSPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+{% if GraceTPie %}
+    Highcharts.chart('GraceTPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Grace T Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ GraceTPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if JimCPie %}
+    Highcharts.chart('JimCPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Jim C Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ JimCPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if JoeSPie %}
+    Highcharts.chart('JoeSPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Joe S Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ JoeSPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if LeeNPie %}
+    Highcharts.chart('LeeNPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Lee N Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ LeeNPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if MarcosTPie %}
+    Highcharts.chart('MarcosTPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Marcos T Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ MarcosTPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if MattVPie %}
+    Highcharts.chart('MattVPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Matt V Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ MattVPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+{% if PamLPie %}
+    Highcharts.chart('PamLPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Pam L Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ PamLPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+{% if TimMPie %}
+    Highcharts.chart('TimMPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Tim M Job Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ TimMPie | safe }}]
+        }]
+    });
+
+{% endif %}
+{% if UweNPie %}
+    Highcharts.chart('UweNPie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Uwe N Percentage'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{{ UweNPie | safe }}]
+        }]
+    });
+
+{% endif %}
+
+
+
+});
+
+{% endblock %}
+
+
+{% block content %}
+
+<div id="graphContainer"> 
+
+<h1 style="text-align: center; padding-top: 3%; padding-bottom: 2%; "> Watchdog's Job Page </h1>
+
+
+<h3 style="text-align: center; padding-top: 1%;"> Today's Jobs </h1>
+
+<div style="width: 80%; padding-left: 15%; paddint-right: 5%" >
+<div id="jobs_today" style="display:table;width:100%;height:100%; padding-top: 2%">
+
+
+                <div style="width:100%;display:table;">
+
+                <table style="margin: 0 auto;">
+                <tr><th>Name</th><th>Job</th></tr>
+		{% if PhoneToday %} {{PhoneToday | safe}} {% endif %}
+
+               </table>
+                </div>
+
+</div>
+</div>
+
+
+<div style="padding-bottom:3%">
+<h3 style="text-align: center; padding-top: 3%;"> Historic Jobs by Job </h1>
+
+{% if PhonePie %} <div id="PhonePie" style="padding-top: 2%;width:50%; height:700px; float: left;"> </div> {% endif %}
+{% if ChatPie %} <div id="ChatPie" style="padding-top: 2%;width:50%; height:700px; float: left;"> </div> {% endif %}
+{% if AlertPie %} <div id="AlertPie" style="padding-top: 1%;width:50%; height:700px; float: left;"> </div> {% endif %}
+{% if TicketPie %} <div id="TicketPie" style="padding-top: 1%;width:50%; height:700px; float: left;"> </div> {% endif %}
+</div>
+
+
+</br></br>
+
+<div style="padding-top: 5%">
+<h3 style="text-align: center;"> Historic Jobs by Racker </h1>
+
+{% if CarlosSPie %} <div id="CarlosSPie" style="padding-top: 3%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if GraceTPie %} <div id="GraceTPie" style="padding-top: 3%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if JimCPie %} <div id="JimCPie" style="padding-top: 3%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if JoeSPie %} <div id="JoeSPie" style="padding-top: 1%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if LeeNPie %} <div id="LeeNPie" style="padding-top: 1%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if MarcosTPie %} <div id="MarcosTPie" style="padding-top: 1%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if MattVPie %} <div id="MattVPie" style="padding-top: 1%;width:33%; height:700px; float: left;"> </div> {% endif %}
+{% if PamLPie %} <div id="PamLPie" style="padding-top: 1%;width:33%; height:700px; float: left"> </div> {% endif %}
+{% if TimMPie %} <div id="TimMPie" style="padding-top: 1%;width:33%; height:700px; float: left"> </div> {% endif %}
+{% if UweNPie %} <div id="UweNPie" style="padding-top: 1%;width:33%; height:700px; float: left"> </div> {% endif %}
+</div> 
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
